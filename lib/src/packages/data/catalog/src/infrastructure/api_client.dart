@@ -1,8 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:ftf_github_api/src/packages/data/catalog/infrastructure/api_dtos.dart';
 import 'package:http/http.dart' as http;
+
+import 'api_dtos.dart';
 
 const owner = 'alvaroarmijos';
 const repo = 'ftf_github_api';

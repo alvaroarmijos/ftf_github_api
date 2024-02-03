@@ -1,6 +1,5 @@
-import 'package:ftf_github_api/src/packages/data/catalog/domain/commit/commit_author.dart';
-
 import '../../domain/commit/commit.dart';
+import '../../domain/commit/commit_author.dart';
 import '../api_dtos.dart';
 
 class CommitMapper {
