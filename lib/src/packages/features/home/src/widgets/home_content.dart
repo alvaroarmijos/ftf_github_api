@@ -28,10 +28,12 @@ class HomeContent extends StatelessWidget {
                 commit.author.avatarUrl,
               ),
             ),
-            trailing: Badge(
-              label: Text('${commit.commentCount}'),
-              child: const Icon(Icons.comment),
-            ),
+            trailing: commit.commentCount > 0
+                ? Badge(
+                    label: Text('${commit.commentCount}'),
+                    child: const Icon(Icons.comment),
+                  )
+                : null,
             title: Text(commit.message),
             subtitle: Column(
               children: [
@@ -78,7 +80,9 @@ class CommitItem extends StatelessWidget {
           const SizedBox(
             width: FtfDimens.dimen_8,
           ),
-          Text(label),
+          Flexible(
+            child: Text(label),
+          ),
         ],
       ),
     );
