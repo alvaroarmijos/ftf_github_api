@@ -7,8 +7,7 @@ import 'api_dtos.dart';
 
 const owner = 'alvaroarmijos';
 const repo = 'ftf_github_api';
-const token =
-    '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';
+const token = 'token';
 
 class CatalogApiClient {
   const CatalogApiClient(
