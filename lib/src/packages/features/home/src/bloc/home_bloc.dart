@@ -20,6 +20,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     GetCommitsEvent event,
     Emitter<HomeState> emit,
   ) {
+    emit(const HomeLoading());
     return emit.forEach(
       _getAllCommits(),
       onData: (commits) => HomeSuccess(commits),
