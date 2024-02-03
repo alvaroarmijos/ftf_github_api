@@ -12,7 +12,9 @@ final class HomeLoading extends HomeState {
 }
 
 final class HomeSuccess extends HomeState {
-  const HomeSuccess();
+  const HomeSuccess(this.commits);
+
+  final List<Commit> commits;
 }
 
 final class HomeError extends HomeState {

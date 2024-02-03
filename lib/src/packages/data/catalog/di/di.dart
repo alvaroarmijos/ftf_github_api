@@ -6,9 +6,7 @@ import '../src/infrastructure/api_client.dart';
 import '../src/infrastructure/commit/commit_mapper.dart';
 import '../src/infrastructure/commit/commit_repository_impl.dart';
 
-final sl = GetIt.instance;
-
-void init() async {
+Future<void> init(GetIt sl) async {
   //Use cases
   sl.registerFactory(() => GetAllCommits(sl()));
 

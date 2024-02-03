@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:ftf_github_api/app/ftf_app.dart';
 
-void main() => runApp(const MyApp());
+import 'app/di/di.dart' as di;
+
+void main() async {
+  await di.init();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'FTF App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
-    );
+    return const FtfApp();
   }
 }
