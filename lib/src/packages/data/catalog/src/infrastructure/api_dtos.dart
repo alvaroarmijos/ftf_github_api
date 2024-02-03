@@ -183,7 +183,7 @@ class CommitAuthorDto {
       CommitAuthorDto(
         name: json["name"],
         email: json["email"],
-        date: DateTime.parse(json["date"]),
+        date: DateTime.parse(json["date"]).toLocal(),
       );
 
   Map<String, dynamic> toJson() => {
