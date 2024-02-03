@@ -6,7 +6,6 @@ class ChangeDto {
   final CommitDto commit;
   final String url;
   final ChangeAuthorDto author;
-  final ChangeAuthorDto committer;
 
   ChangeDto({
     required this.sha,
@@ -14,7 +13,6 @@ class ChangeDto {
     required this.commit,
     required this.url,
     required this.author,
-    required this.committer,
   });
 
   factory ChangeDto.fromRawJson(String str) =>
@@ -28,7 +26,6 @@ class ChangeDto {
         commit: CommitDto.fromJson(json["commit"]),
         url: json["url"],
         author: ChangeAuthorDto.fromJson(json["author"]),
-        committer: ChangeAuthorDto.fromJson(json["committer"]),
       );
 
   static List<ChangeDto> fromJsonArray(List jsonArray) =>
@@ -40,7 +37,6 @@ class ChangeDto {
         "commit": commit.toJson(),
         "url": url,
         "author": author.toJson(),
-        "committer": committer.toJson(),
       };
 }
 
@@ -138,11 +134,13 @@ class CommitDto {
   final String message;
   final String url;
   final int commentCount;
+  final CommitAuthorDto author;
 
   CommitDto({
     required this.message,
     required this.url,
     required this.commentCount,
+    required this.author,
   });
 
   factory CommitDto.fromRawJson(String str) =>
@@ -151,14 +149,46 @@ class CommitDto {
   String toRawJson() => json.encode(toJson());
 
   factory CommitDto.fromJson(Map<String, dynamic> json) => CommitDto(
+        author: CommitAuthorDto.fromJson(json["author"]),
         message: json["message"],
         url: json["url"],
         commentCount: json["comment_count"],
       );
 
   Map<String, dynamic> toJson() => {
+        "author": author.toJson(),
         "message": message,
         "url": url,
         "comment_count": commentCount,
+      };
+}
+
+class CommitAuthorDto {
+  final String name;
+  final String email;
+  final DateTime date;
+
+  CommitAuthorDto({
+    required this.name,
+    required this.email,
+    required this.date,
+  });
+
+  factory CommitAuthorDto.fromRawJson(String str) =>
+      CommitAuthorDto.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory CommitAuthorDto.fromJson(Map<String, dynamic> json) =>
+      CommitAuthorDto(
+        name: json["name"],
+        email: json["email"],
+        date: DateTime.parse(json["date"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "email": email,
+        "date": date.toIso8601String(),
       };
 }
