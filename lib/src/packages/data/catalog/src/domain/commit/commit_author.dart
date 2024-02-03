@@ -1,4 +1,6 @@
-class CommitAuthor {
+import 'package:equatable/equatable.dart';
+
+class CommitAuthor extends Equatable {
   final int id;
   final String avatarUrl;
   final String type;
@@ -6,7 +8,7 @@ class CommitAuthor {
   final String email;
   final DateTime date;
 
-  CommitAuthor({
+  const CommitAuthor({
     required this.id,
     required this.avatarUrl,
     required this.type,
@@ -14,4 +16,16 @@ class CommitAuthor {
     required this.email,
     required this.date,
   });
+
+  static final empty = CommitAuthor(
+    id: 0,
+    avatarUrl: '',
+    type: '',
+    name: '',
+    email: '',
+    date: DateTime(2024),
+  );
+
+  @override
+  List<Object?> get props => [id, avatarUrl, type, name, email, date];
 }
