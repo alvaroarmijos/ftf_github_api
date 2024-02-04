@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ftf_github_api/src/packages/features/home/home.dart';
-import 'package:ftf_github_api/src/packages/features/home/src/pages/home_error_page.dart';
+import 'package:ftf_github_api/src/packages/features/home/src/pages/pages.dart';
 import 'package:ftf_github_api/src/packages/features/home/src/widgets/home_content.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -43,7 +43,7 @@ void main() {
       await widgetTester.pumpWidget(homePage);
 
       expect(find.text('FTF GitHub API'), findsOne);
-      expect(find.byType(CircularProgressIndicator), findsOne);
+      expect(find.byType(HomeLoadingPage), findsOne);
     });
 
     testWidgets('should render error view ', (widgetTester) async {
